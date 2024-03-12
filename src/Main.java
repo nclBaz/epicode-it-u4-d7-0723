@@ -110,7 +110,7 @@ public class Main {
 		lettereSet.add("q");
 		lettereSet.add("a");
 		lettereSet.add("a");
-		lettereSet.add("f"); 
+		lettereSet.add("f");
 
 		for(String lettera: lettereSet){
 			System.out.println(lettera);
@@ -125,5 +125,36 @@ public class Main {
 			System.out.println(u);
 		}
 
+		// ***************************************************** MAPS *******************************************************
+		Map<Integer, User> usersMap = new HashMap<>(); // Ogni elemento della mappa sarà rappresentato da una coppia <Chiave, Valore>
+		// In questo caso specifico sto dichiarando che ogni elemento di questa mappa avrà chiave di tipo Intero e valore di tipo User
+		// Ogni elmento sarà tipo:
+		// 1231321 - Aldo Baglio
+		// 1232132 - Giovanni Storti
+
+		Map<String, String> dizionario = new HashMap<>(); // Qua abbiamo sia Chiavi che Valori in formato String
+
+		System.out.println("----------------------------------- AGGIUNTA ELEMENTI ---------------------------------");
+		usersMap.put(123, aldo);
+		usersMap.put(124, giovanni);
+
+		System.out.println(usersMap);
+
+		dizionario.put("albero", "Definizione di albero");
+		dizionario.put("casa", "Definizione di casa");
+		dizionario.put("casa", "blablabla");
+		System.out.println(dizionario);
+
+		System.out.println(dizionario.get("albero"));
+		dizionario.replace("albero", "Definizione più aggiornata di albero");
+		//dizionario.remove("casa");
+		System.out.println(dizionario);
+
+		Set<String> chiavi = dizionario.keySet(); // mi ritorna l'elenco di tutte le chiave
+		for(String chiave: chiavi) {
+			System.out.println("Chiave " + chiave);
+			System.out.println("Valore " + dizionario.get(chiave));
+		}
+		
 	}
 }
