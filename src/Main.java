@@ -92,5 +92,38 @@ public class Main {
 			if(lettera.equals("b")) iterator.remove(); // N.B. non sto facendo listaStringhe.remove() ma iterator.remove()
 			else System.out.println(lettera);
 		}
+
+		// ***************************************************** SET *******************************************************
+		Set<User> usersSet = new HashSet<>();
+		usersSet.add(aldo);
+		usersSet.add(giovanni);
+		usersSet.add(giacomo);
+		usersSet.add(aldo);
+		// Java non mi avverte se ci sono duplicati dandomi un errore, ci sarà intellij che al massimo mi darà un warning
+
+		for (User user : usersSet){
+			System.out.println(user);
+		}
+
+		Set<String> lettereSet = new TreeSet<>();
+		lettereSet.add("f");
+		lettereSet.add("q");
+		lettereSet.add("a");
+		lettereSet.add("a");
+		lettereSet.add("f"); 
+
+		for(String lettera: lettereSet){
+			System.out.println(lettera);
+		}
+
+		Set<User> usersTreeSet = new TreeSet<>();
+		usersTreeSet.add(giacomo);
+		usersTreeSet.add(aldo);
+		usersTreeSet.add(giovanni);
+
+		for(User u: usersTreeSet){
+			System.out.println(u);
+		}
+
 	}
 }

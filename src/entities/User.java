@@ -2,7 +2,7 @@ package entities;
 
 import java.util.Objects;
 
-public class User {
+public class User implements Comparable<User>{
 	private String name;
 	private String surname;
 	private int age;
@@ -11,6 +11,18 @@ public class User {
 		this.name = name;
 		this.surname = surname;
 		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public int getAge() {
+		return age;
 	}
 
 	@Override
@@ -28,5 +40,10 @@ public class User {
 		if (o == null || getClass() != o.getClass()) return false;
 		User user = (User) o;
 		return age == user.age && Objects.equals(name, user.name) && Objects.equals(surname, user.surname);
+	}
+
+	@Override
+	public int compareTo(User o) {
+		return this.getName().compareTo(o.getName());
 	}
 }
