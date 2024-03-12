@@ -1,8 +1,7 @@
 import entities.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -11,7 +10,8 @@ public class Main {
 		User giovanni = new User("Giovanni", "Storti", 40);
 		User giacomo = new User("Giacomo", "Poretti", 50);
 
-		ArrayList<User> usersList = new ArrayList<>();
+		List<User> usersList = new ArrayList<>(); // UPCASTING
+
 		System.out.println("La lista ha " + usersList.size() + " elementi.");
 		// Tra le parentesi angolari <> vado a specificare il tipo di dato che sarà conservato nella lista
 		usersList.add(aldo);
@@ -70,5 +70,27 @@ public class Main {
 		System.out.println("La lista è vuota? " + usersList.isEmpty());
 		usersList.clear(); // Svuoto la lista
 		System.out.println("La lista è vuota? " + usersList.isEmpty());
+
+		List<User> userLinkedList = new LinkedList<>();
+		// Qua non sto usando l'upcasting, il che vuol dire che potrò usare i metodi più specifici che solo le LinkedList possiedono
+		// Di contro però in futuro non avrò probabilmente la possibilità di poter sostituire questa LinkedList con un ArrayList cambiando una sola riga di codice
+
+		// ArrayList<int> listaNumeri = new ArrayList<>(); // Nelle Collection non posso inserire dati primitivi, solo oggetti
+		ArrayList<Integer> listaNumeri = new ArrayList<>();
+		listaNumeri.add(2);
+
+		ArrayList<String> listaStringhe = new ArrayList<>(Arrays.asList("a", "b", "c", "d"));
+/*		for(String lettera: listaStringhe){
+			if(lettera.equals("b")) listaStringhe.remove(lettera); // Java lancia un'eccezione quando provo a rimuovere un elemento da una lista durante l'iterazione
+			else System.out.println(lettera);
+		}*/
+
+		// Se voglio rimuovere elementi durante le iterazioni di un ciclo devo usare gli ITERATORS
+		Iterator<String> iterator = listaStringhe.iterator();
+		while(iterator.hasNext()) { // finchè ci sono ulteriori elementi, continua a ciclare
+			String lettera = iterator.next(); // .next() mi ritorna l'elemento corrente
+			if(lettera.equals("b")) iterator.remove(); // N.B. non sto facendo listaStringhe.remove() ma iterator.remove()
+			else System.out.println(lettera);
+		}
 	}
 }
